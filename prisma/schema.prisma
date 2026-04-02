@@ -1,0 +1,99 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Visibility {
+  PUBLIC
+  PRIVATE
+}
+
+enum REACTION {
+  LIKE
+  LOVE
+  CARE
+  HAHA
+  ANGRY
+  SAD
+  WOW
+}
+
+model User {
+  id               String            @default(cuid())
+  name             String            @unique
+  email            String
+  phone            String?
+  bio              String?
+  avatarUrl        String?
+  coverUrl         String?
+  profession       String?
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  posts            Post[]
+  comments         Comment[]
+  postReactions    PostReaction[]
+  commentReactions CommentReaction[]
+}
+
+model Post {
+  id            String         @default(cuid())
+  authorId      String
+  author        User           @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  content       String         @db.Text
+  visibility    Visibility     @default(PUBLIC)
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  postImages    PostImage[]
+  comments      Comment[]
+  postReactions PostReaction[]
+}
+
+model PostImage {
+  id        String @default(cuid())
+  postId    String
+  post      Post   @relation(fields: [postId], references: [id], onDelete: Cascade)
+  url       String
+  sortOrder Int    @default(0)
+}
+
+model Comment {
+  id               String            @default(cuid())
+  postId           String
+  post             Post              @relation(fields: [postId], references: [id], onDelete: Cascade)
+  authorId         String
+  author           User              @relation(fields: [postId], references: [id], onDelete: SetNull)
+  content          String            @db.Text
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  commentReactions CommentReaction[]
+}
+
+model PostReaction {
+  id        String   @default(cuid())
+  postId    String
+  post      Post     @relation(fields: [postId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type      REACTION
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([postId, userId])
+}
+
+model CommentReaction {
+  id        String   @default(cuid())
+  commentId String
+  comment   Comment  @relation(fields: [commentId], references: [id], onDelete: Cascade)
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type      REACTION
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([commentId, userId])
+}
