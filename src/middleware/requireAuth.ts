@@ -1,5 +1,6 @@
 import type { Request, Response, NextFunction } from "express";
 import { verifyAccessToken } from "@/lib/jwt";
+import { UnauthorizedError } from "@/http/errors/httpErrors";
 
 export type AuthenticatedRequest = Request & {
   auth?: {
@@ -8,12 +9,12 @@ export type AuthenticatedRequest = Request & {
   };
 };
 
-export function requireAuth(req: AuthenticatedRequest, res: Response, next: NextFunction) {
+export function requireAuth(req: AuthenticatedRequest, _res: Response, next: NextFunction) {
   const header = req.header("authorization");
   const token = header?.startsWith("Bearer ") ? header.slice("Bearer ".length) : null;
 
   if (!token) {
-    return res.status(401).json({ error: "UNAUTHORIZED" });
+    return next(new UnauthorizedError({ code: "UNAUTHORIZED" }));
   }
 
   try {
@@ -21,6 +22,6 @@ export function requireAuth(req: AuthenticatedRequest, res: Response, next: Next
     req.auth = { userId: payload.sub, email: payload.email };
     return next();
   } catch {
-    return res.status(401).json({ error: "UNAUTHORIZED" });
+    return next(new UnauthorizedError({ code: "UNAUTHORIZED" }));
   }
 }

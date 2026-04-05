@@ -1,4 +1,4 @@
-import { PrismaClient } from "../../generated/prisma/client/client";
+import { PrismaClient, Prisma } from "../../generated/prisma/client/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { env } from "./env";
 
@@ -7,3 +7,6 @@ const adapter = new PrismaPg({
 });
 
 export const prisma = new PrismaClient({ adapter });
+
+// Export Prisma namespace for error-class checks in the error middleware.
+export { Prisma };
