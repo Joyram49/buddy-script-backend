@@ -7,7 +7,8 @@ export default defineConfig({
     path: "prisma/migrations",
   },
   datasource: {
-    url: env("DATABASE_URL"),
+    // Prisma 7 config supports only `url` here.
+    // Point CLI schema operations to DIRECT_URL (port 5432) for Supabase.
+    url: env("DIRECT_URL"),
   },
 });
-
