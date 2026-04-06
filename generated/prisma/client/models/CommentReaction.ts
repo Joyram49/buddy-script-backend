@@ -28,7 +28,7 @@ export type CommentReactionMinAggregateOutputType = {
   id: string | null
   commentId: string | null
   userId: string | null
-  type: $Enums.ReactionType | null
+  type: $Enums.REACTION | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -37,7 +37,7 @@ export type CommentReactionMaxAggregateOutputType = {
   id: string | null
   commentId: string | null
   userId: string | null
-  type: $Enums.ReactionType | null
+  type: $Enums.REACTION | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -157,7 +157,7 @@ export type CommentReactionGroupByOutputType = {
   id: string
   commentId: string
   userId: string
-  type: $Enums.ReactionType
+  type: $Enums.REACTION
   createdAt: Date
   updatedAt: Date
   _count: CommentReactionCountAggregateOutputType | null
@@ -187,7 +187,7 @@ export type CommentReactionWhereInput = {
   id?: Prisma.StringFilter<"CommentReaction"> | string
   commentId?: Prisma.StringFilter<"CommentReaction"> | string
   userId?: Prisma.StringFilter<"CommentReaction"> | string
-  type?: Prisma.EnumReactionTypeFilter<"CommentReaction"> | $Enums.ReactionType
+  type?: Prisma.EnumREACTIONFilter<"CommentReaction"> | $Enums.REACTION
   createdAt?: Prisma.DateTimeFilter<"CommentReaction"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"CommentReaction"> | Date | string
   comment?: Prisma.XOR<Prisma.CommentScalarRelationFilter, Prisma.CommentWhereInput>
@@ -213,7 +213,7 @@ export type CommentReactionWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.CommentReactionWhereInput | Prisma.CommentReactionWhereInput[]
   commentId?: Prisma.StringFilter<"CommentReaction"> | string
   userId?: Prisma.StringFilter<"CommentReaction"> | string
-  type?: Prisma.EnumReactionTypeFilter<"CommentReaction"> | $Enums.ReactionType
+  type?: Prisma.EnumREACTIONFilter<"CommentReaction"> | $Enums.REACTION
   createdAt?: Prisma.DateTimeFilter<"CommentReaction"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"CommentReaction"> | Date | string
   comment?: Prisma.XOR<Prisma.CommentScalarRelationFilter, Prisma.CommentWhereInput>
@@ -239,17 +239,17 @@ export type CommentReactionScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"CommentReaction"> | string
   commentId?: Prisma.StringWithAggregatesFilter<"CommentReaction"> | string
   userId?: Prisma.StringWithAggregatesFilter<"CommentReaction"> | string
-  type?: Prisma.EnumReactionTypeWithAggregatesFilter<"CommentReaction"> | $Enums.ReactionType
+  type?: Prisma.EnumREACTIONWithAggregatesFilter<"CommentReaction"> | $Enums.REACTION
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"CommentReaction"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"CommentReaction"> | Date | string
 }
 
 export type CommentReactionCreateInput = {
   id?: string
-  type: $Enums.ReactionType
+  type: $Enums.REACTION
   createdAt?: Date | string
   updatedAt?: Date | string
-  comment: Prisma.CommentCreateNestedOneWithoutReactionsInput
+  comment: Prisma.CommentCreateNestedOneWithoutCommentReactionsInput
   user: Prisma.UserCreateNestedOneWithoutCommentReactionsInput
 }
 
@@ -257,17 +257,17 @@ export type CommentReactionUncheckedCreateInput = {
   id?: string
   commentId: string
   userId: string
-  type: $Enums.ReactionType
+  type: $Enums.REACTION
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type CommentReactionUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  type?: Prisma.EnumReactionTypeFieldUpdateOperationsInput | $Enums.ReactionType
+  type?: Prisma.EnumREACTIONFieldUpdateOperationsInput | $Enums.REACTION
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  comment?: Prisma.CommentUpdateOneRequiredWithoutReactionsNestedInput
+  comment?: Prisma.CommentUpdateOneRequiredWithoutCommentReactionsNestedInput
   user?: Prisma.UserUpdateOneRequiredWithoutCommentReactionsNestedInput
 }
 
@@ -275,7 +275,7 @@ export type CommentReactionUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   commentId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
-  type?: Prisma.EnumReactionTypeFieldUpdateOperationsInput | $Enums.ReactionType
+  type?: Prisma.EnumREACTIONFieldUpdateOperationsInput | $Enums.REACTION
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -284,14 +284,14 @@ export type CommentReactionCreateManyInput = {
   id?: string
   commentId: string
   userId: string
-  type: $Enums.ReactionType
+  type: $Enums.REACTION
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type CommentReactionUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  type?: Prisma.EnumReactionTypeFieldUpdateOperationsInput | $Enums.ReactionType
+  type?: Prisma.EnumREACTIONFieldUpdateOperationsInput | $Enums.REACTION
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -300,7 +300,7 @@ export type CommentReactionUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   commentId?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
-  type?: Prisma.EnumReactionTypeFieldUpdateOperationsInput | $Enums.ReactionType
+  type?: Prisma.EnumREACTIONFieldUpdateOperationsInput | $Enums.REACTION
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -433,16 +433,16 @@ export type CommentReactionUncheckedUpdateManyWithoutCommentNestedInput = {
 
 export type CommentReactionCreateWithoutUserInput = {
   id?: string
-  type: $Enums.ReactionType
+  type: $Enums.REACTION
   createdAt?: Date | string
   updatedAt?: Date | string
-  comment: Prisma.CommentCreateNestedOneWithoutReactionsInput
+  comment: Prisma.CommentCreateNestedOneWithoutCommentReactionsInput
 }
 
 export type CommentReactionUncheckedCreateWithoutUserInput = {
   id?: string
   commentId: string
-  type: $Enums.ReactionType
+  type: $Enums.REACTION
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -480,14 +480,14 @@ export type CommentReactionScalarWhereInput = {
   id?: Prisma.StringFilter<"CommentReaction"> | string
   commentId?: Prisma.StringFilter<"CommentReaction"> | string
   userId?: Prisma.StringFilter<"CommentReaction"> | string
-  type?: Prisma.EnumReactionTypeFilter<"CommentReaction"> | $Enums.ReactionType
+  type?: Prisma.EnumREACTIONFilter<"CommentReaction"> | $Enums.REACTION
   createdAt?: Prisma.DateTimeFilter<"CommentReaction"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"CommentReaction"> | Date | string
 }
 
 export type CommentReactionCreateWithoutCommentInput = {
   id?: string
-  type: $Enums.ReactionType
+  type: $Enums.REACTION
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutCommentReactionsInput
@@ -496,7 +496,7 @@ export type CommentReactionCreateWithoutCommentInput = {
 export type CommentReactionUncheckedCreateWithoutCommentInput = {
   id?: string
   userId: string
-  type: $Enums.ReactionType
+  type: $Enums.REACTION
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -530,23 +530,23 @@ export type CommentReactionUpdateManyWithWhereWithoutCommentInput = {
 export type CommentReactionCreateManyUserInput = {
   id?: string
   commentId: string
-  type: $Enums.ReactionType
+  type: $Enums.REACTION
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type CommentReactionUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  type?: Prisma.EnumReactionTypeFieldUpdateOperationsInput | $Enums.ReactionType
+  type?: Prisma.EnumREACTIONFieldUpdateOperationsInput | $Enums.REACTION
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  comment?: Prisma.CommentUpdateOneRequiredWithoutReactionsNestedInput
+  comment?: Prisma.CommentUpdateOneRequiredWithoutCommentReactionsNestedInput
 }
 
 export type CommentReactionUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   commentId?: Prisma.StringFieldUpdateOperationsInput | string
-  type?: Prisma.EnumReactionTypeFieldUpdateOperationsInput | $Enums.ReactionType
+  type?: Prisma.EnumREACTIONFieldUpdateOperationsInput | $Enums.REACTION
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -554,7 +554,7 @@ export type CommentReactionUncheckedUpdateWithoutUserInput = {
 export type CommentReactionUncheckedUpdateManyWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   commentId?: Prisma.StringFieldUpdateOperationsInput | string
-  type?: Prisma.EnumReactionTypeFieldUpdateOperationsInput | $Enums.ReactionType
+  type?: Prisma.EnumREACTIONFieldUpdateOperationsInput | $Enums.REACTION
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -562,14 +562,14 @@ export type CommentReactionUncheckedUpdateManyWithoutUserInput = {
 export type CommentReactionCreateManyCommentInput = {
   id?: string
   userId: string
-  type: $Enums.ReactionType
+  type: $Enums.REACTION
   createdAt?: Date | string
   updatedAt?: Date | string
 }
 
 export type CommentReactionUpdateWithoutCommentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  type?: Prisma.EnumReactionTypeFieldUpdateOperationsInput | $Enums.ReactionType
+  type?: Prisma.EnumREACTIONFieldUpdateOperationsInput | $Enums.REACTION
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutCommentReactionsNestedInput
@@ -578,7 +578,7 @@ export type CommentReactionUpdateWithoutCommentInput = {
 export type CommentReactionUncheckedUpdateWithoutCommentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
-  type?: Prisma.EnumReactionTypeFieldUpdateOperationsInput | $Enums.ReactionType
+  type?: Prisma.EnumREACTIONFieldUpdateOperationsInput | $Enums.REACTION
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -586,7 +586,7 @@ export type CommentReactionUncheckedUpdateWithoutCommentInput = {
 export type CommentReactionUncheckedUpdateManyWithoutCommentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
-  type?: Prisma.EnumReactionTypeFieldUpdateOperationsInput | $Enums.ReactionType
+  type?: Prisma.EnumREACTIONFieldUpdateOperationsInput | $Enums.REACTION
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -659,7 +659,7 @@ export type $CommentReactionPayload<ExtArgs extends runtime.Types.Extensions.Int
     id: string
     commentId: string
     userId: string
-    type: $Enums.ReactionType
+    type: $Enums.REACTION
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["commentReaction"]>
@@ -1090,7 +1090,7 @@ export interface CommentReactionFieldRefs {
   readonly id: Prisma.FieldRef<"CommentReaction", 'String'>
   readonly commentId: Prisma.FieldRef<"CommentReaction", 'String'>
   readonly userId: Prisma.FieldRef<"CommentReaction", 'String'>
-  readonly type: Prisma.FieldRef<"CommentReaction", 'ReactionType'>
+  readonly type: Prisma.FieldRef<"CommentReaction", 'REACTION'>
   readonly createdAt: Prisma.FieldRef<"CommentReaction", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"CommentReaction", 'DateTime'>
 }

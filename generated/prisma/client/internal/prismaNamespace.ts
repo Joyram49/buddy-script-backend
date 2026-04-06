@@ -894,14 +894,14 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 
 export const UserScalarFieldEnum = {
   id: 'id',
-  email: 'email',
   name: 'name',
+  email: 'email',
   passwordHash: 'passwordHash',
+  phone: 'phone',
   bio: 'bio',
   avatarUrl: 'avatarUrl',
-  coverImageUrl: 'coverImageUrl',
+  coverUrl: 'coverUrl',
   profession: 'profession',
-  phone: 'phone',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -935,6 +935,7 @@ export const CommentScalarFieldEnum = {
   id: 'id',
   postId: 'postId',
   authorId: 'authorId',
+  parentCommentId: 'parentCommentId',
   content: 'content',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -1026,16 +1027,16 @@ export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaM
 
 
 /**
- * Reference to a field of type 'PostVisibility'
+ * Reference to a field of type 'Visibility'
  */
-export type EnumPostVisibilityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PostVisibility'>
+export type EnumVisibilityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Visibility'>
     
 
 
 /**
- * Reference to a field of type 'PostVisibility[]'
+ * Reference to a field of type 'Visibility[]'
  */
-export type ListEnumPostVisibilityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PostVisibility[]'>
+export type ListEnumVisibilityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Visibility[]'>
     
 
 
@@ -1054,16 +1055,16 @@ export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel,
 
 
 /**
- * Reference to a field of type 'ReactionType'
+ * Reference to a field of type 'REACTION'
  */
-export type EnumReactionTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ReactionType'>
+export type EnumREACTIONFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'REACTION'>
     
 
 
 /**
- * Reference to a field of type 'ReactionType[]'
+ * Reference to a field of type 'REACTION[]'
  */
-export type ListEnumReactionTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ReactionType[]'>
+export type ListEnumREACTIONFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'REACTION[]'>
     
 
 

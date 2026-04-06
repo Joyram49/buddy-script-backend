@@ -9,22 +9,22 @@
 * 🟢 You can import this file directly.
 */
 
-export const PostVisibility = {
+export const Visibility = {
   PUBLIC: 'PUBLIC',
   PRIVATE: 'PRIVATE'
 } as const
 
-export type PostVisibility = (typeof PostVisibility)[keyof typeof PostVisibility]
+export type Visibility = (typeof Visibility)[keyof typeof Visibility]
 
 
-export const ReactionType = {
+export const REACTION = {
   LIKE: 'LIKE',
   LOVE: 'LOVE',
   CARE: 'CARE',
   HAHA: 'HAHA',
-  WOW: 'WOW',
+  ANGRY: 'ANGRY',
   SAD: 'SAD',
-  ANGRY: 'ANGRY'
+  WOW: 'WOW'
 } as const
 
-export type ReactionType = (typeof ReactionType)[keyof typeof ReactionType]
+export type REACTION = (typeof REACTION)[keyof typeof REACTION]

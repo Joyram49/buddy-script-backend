@@ -6,6 +6,7 @@ import morgan from "morgan";
 import { env } from "@/lib/env";
 import { healthRouter } from "@/routes/health";
 import { authRouter } from "@/routes/auth";
+import { postRouter } from "@/routes/post";
 import { errorHandler, notFoundHandler } from "@/http/middleware/errorHandler";
 
 export const app = express();
@@ -22,6 +23,7 @@ app.use(morgan(env.NODE_ENV === "production" ? "combined" : "dev"));
 
 app.use(healthRouter);
 app.use(authRouter);
+app.use(postRouter);
 
 app.use(notFoundHandler);
 app.use(errorHandler);

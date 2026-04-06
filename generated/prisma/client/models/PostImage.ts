@@ -256,7 +256,7 @@ export type PostImageCreateInput = {
   id?: string
   url: string
   sortOrder?: number
-  post: Prisma.PostCreateNestedOneWithoutImagesInput
+  post: Prisma.PostCreateNestedOneWithoutPostImagesInput
 }
 
 export type PostImageUncheckedCreateInput = {
@@ -270,7 +270,7 @@ export type PostImageUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   url?: Prisma.StringFieldUpdateOperationsInput | string
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
-  post?: Prisma.PostUpdateOneRequiredWithoutImagesNestedInput
+  post?: Prisma.PostUpdateOneRequiredWithoutPostImagesNestedInput
 }
 
 export type PostImageUncheckedUpdateInput = {
