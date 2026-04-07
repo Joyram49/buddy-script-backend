@@ -1,8 +1,8 @@
 import bcrypt from "bcryptjs";
 
-import { prisma } from "@/lib/prisma";
-import { signAccessToken } from "@/lib/jwt";
-import { NotFoundError, UnauthorizedError } from "@/http/errors/httpErrors";
+import { prisma } from "../lib/prisma.js";
+import { signAccessToken } from "../lib/jwt.js";
+import { NotFoundError, UnauthorizedError } from "../http/errors/httpErrors.js";
 
 type RegisterInput = {
   email: string;

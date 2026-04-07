@@ -1,6 +1,6 @@
 import type { Request, Response, NextFunction } from "express";
-import { verifyAccessToken } from "@/lib/jwt";
-import { UnauthorizedError } from "@/http/errors/httpErrors";
+import { verifyAccessToken } from "../lib/jwt.js";
+import { UnauthorizedError } from "../http/errors/httpErrors.js";
 
 export type AuthenticatedRequest = Request & {
   auth?: {

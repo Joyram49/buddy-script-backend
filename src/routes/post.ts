@@ -1,8 +1,8 @@
 import { Router } from "express";
 
-import { postController, upload } from "@/controllers/postController";
-import { asyncHandler } from "@/http/asyncHandler";
-import { requireAuth } from "@/middleware/requireAuth";
+import { postController, upload } from "../controllers/postController.js";
+import { asyncHandler } from "../http/asyncHandler.js";
+import { requireAuth } from "../middleware/requireAuth.js";
 
 export const postRouter = Router();
 

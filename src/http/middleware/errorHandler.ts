@@ -1,16 +1,16 @@
 import type { NextFunction, Request, Response } from "express";
 import { z } from "zod";
 
-import { env } from "@/lib/env";
-import { Prisma } from "@/lib/prisma";
-import { ApiError, type ApiErrorResponse } from "@/http/errors/ApiError";
+import { env } from "../../lib/env.js";
+import { Prisma } from "../../lib/prisma.js";
+import { ApiError, type ApiErrorResponse } from "../errors/ApiError.js";
 import {
   BadRequestError,
   ConflictError,
   InternalServerError,
   NotFoundError,
   UnauthorizedError,
-} from "@/http/errors/httpErrors";
+} from "../errors/httpErrors.js";
 
 function sanitizeErrorBodyForProduction(body: ApiErrorResponse): ApiErrorResponse {
   return {

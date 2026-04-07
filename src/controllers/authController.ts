@@ -1,9 +1,9 @@
 import type { NextFunction, Request, Response } from "express";
 import { z } from "zod";
 
-import { AuthenticatedRequest } from "@/middleware/requireAuth";
-import { authService } from "@/services/authService";
-import { sendResponse } from "@/http/success/sendResponse";
+import { AuthenticatedRequest } from "../middleware/requireAuth.js";
+import { authService } from "../services/authService.js";
+import { sendResponse } from "../http/success/sendResponse.js";
 
 const RegisterSchema = z.object({
   email: z.string().email(),

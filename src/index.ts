@@ -1,5 +1,5 @@
-import { env } from "@/lib/env";
-import { app } from "@/app";
+import { env } from "./lib/env.js";
+import { app } from "./app.js";
 
 app.listen(env.PORT, () => {
   console.log(`API listening on http://localhost:${env.PORT}`);

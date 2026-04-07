@@ -3,11 +3,11 @@ import express from "express";
 import helmet from "helmet";
 import morgan from "morgan";
 
-import { env } from "@/lib/env";
-import { healthRouter } from "@/routes/health";
-import { authRouter } from "@/routes/auth";
-import { postRouter } from "@/routes/post";
-import { errorHandler, notFoundHandler } from "@/http/middleware/errorHandler";
+import { env } from "./lib/env.js";
+import { healthRouter } from "./routes/health.js";
+import { authRouter } from "./routes/auth.js";
+import { postRouter } from "./routes/post.js";
+import { errorHandler, notFoundHandler } from "./http/middleware/errorHandler.js";
 
 export const app = express();
 
@@ -27,3 +27,5 @@ app.use(postRouter);
 
 app.use(notFoundHandler);
 app.use(errorHandler);
+
+export default app;

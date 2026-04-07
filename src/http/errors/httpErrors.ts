@@ -1,4 +1,4 @@
-import { ApiError } from "./ApiError";
+import { ApiError } from "./ApiError.js";
 
 export class BadRequestError extends ApiError {
   constructor(params: { code?: string; message?: string; issues?: unknown; details?: unknown }) {

@@ -1,10 +1,10 @@
 import type { NextFunction, Response } from "express";
 import { z } from "zod";
 
-import { sendResponse } from "@/http/success/sendResponse";
-import type { AuthenticatedRequest } from "@/middleware/requireAuth";
-import { postService } from "@/services/postService";
-import { BadRequestError } from "@/http/errors/httpErrors";
+import { sendResponse } from "../http/success/sendResponse.js";
+import type { AuthenticatedRequest } from "../middleware/requireAuth.js";
+import { postService } from "../services/postService.js";
+import { BadRequestError } from "../http/errors/httpErrors.js";
 
 const VisibilitySchema = z.enum(["PUBLIC", "PRIVATE"]);
 const ReactionSchema = z.enum(["LIKE", "LOVE", "CARE", "HAHA", "ANGRY", "SAD", "WOW"]);

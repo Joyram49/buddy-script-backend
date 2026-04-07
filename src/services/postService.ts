@@ -1,8 +1,8 @@
-import { Prisma } from "@/lib/prisma";
-import { prisma } from "@/lib/prisma";
-import cloudinary from "@/lib/cloudinary";
-import { BadRequestError, NotFoundError, UnauthorizedError } from "@/http/errors/httpErrors";
-import { buildPaginationMeta, getPagination } from "@/utils/pagination";
+import { Prisma } from "../lib/prisma.js";
+import { prisma } from "../lib/prisma.js";
+import cloudinary from "../lib/cloudinary.js";
+import { BadRequestError, NotFoundError, UnauthorizedError } from "../http/errors/httpErrors.js";
+import { buildPaginationMeta, getPagination } from "../utils/pagination.js";
 
 type Visibility = "PUBLIC" | "PRIVATE";
 type ReactionType = "LIKE" | "LOVE" | "CARE" | "HAHA" | "ANGRY" | "SAD" | "WOW";
